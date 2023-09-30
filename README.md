@@ -33,5 +33,5 @@ If you need to modify the server files, you will find the server files here: /va
 
 ## Credits
 
-This is heavily inspired by [kaimallea/csgo](https://github.com/kaimallea/csgo)
+This is heavily inspired by [kaimallea/csgo](https://github.com/kaimallea/csgo)  
 Remote RCON with this tool seems like a good addition for now [shobhit-pathak/cs2-rcon-panel](https://github.com/shobhit-pathak/cs2-rcon-panel)
