@@ -13,7 +13,7 @@ services:
       SERVER_HOSTNAME: "Counter-strike 2 Dedicated server"
       SERVER_PASSWORD: ""
       RCON_PASSWORD: ""
-      IP: 0.0.0.0 #Change this to your host ip. for example 192.168.1.4
+      IP: 0.0.0.0 
       PORT: 27015
       GAME_TYPE: 0
       GAME_MODE: 1
