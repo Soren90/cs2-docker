@@ -54,6 +54,8 @@ tv_timeout 60
 tv_transmitall 1
 writeid
 writeip
+exec autoexec.cfg
+exec warmup.cfg
 SERVERCFG
 fi
 
