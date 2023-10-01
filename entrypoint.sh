@@ -27,20 +27,6 @@ hostname "$SERVER_HOSTNAME"
 rcon_password "$RCON_PASSWORD"
 sv_password "$SERVER_PASSWORD"
 sv_cheats 0
-exec banned_user.cfg
-exec banned_ip.cfg
-AUTOEXECCFG
-
-else
-sed -i "s/^hostname.*/hostname \"$SERVER_HOSTNAME\"/" $CS2_DIR/game/csgo/cfg/autoexec.cfg
-sed -i "s/^rcon_password.*/rcon_password \"$RCON_PASSWORD\"/" $CS2_DIR/game/csgo/cfg/autoexec.cfg
-sed -i "s/^sv_password.*/sv_password \"$SERVER_PASSWORD\"/" $CS2_DIR/game/csgo/cfg/autoexec.cfg
-
-fi
-
-# Create dynamic server config
-if [ ! -s "$CS2_DIR/game/csgo/cfg/server.cfg" ]; then
-cat << SERVERCFG > "$CS2_DIR/game/csgo/cfg/server.cfg"
 tv_delaymapchange 1
 tv_delay 30
 tv_deltacache 2
@@ -54,9 +40,16 @@ tv_timeout 60
 tv_transmitall 1
 writeid
 writeip
-exec autoexec.cfg
+exec banned_user.cfg
+exec banned_ip.cfg
 exec warmup.cfg
-SERVERCFG
+AUTOEXECCFG
+
+else
+sed -i "s/^hostname.*/hostname \"$SERVER_HOSTNAME\"/" $CS2_DIR/game/csgo/cfg/autoexec.cfg
+sed -i "s/^rcon_password.*/rcon_password \"$RCON_PASSWORD\"/" $CS2_DIR/game/csgo/cfg/autoexec.cfg
+sed -i "s/^sv_password.*/sv_password \"$SERVER_PASSWORD\"/" $CS2_DIR/game/csgo/cfg/autoexec.cfg
+
 fi
 
 # Install/update game
@@ -70,4 +63,4 @@ cp ${STEAMCMD_DIR}/linux32/steamclient.so ${STEAM_DIR}/.steam/sdk32/steamclient.
 cp ${STEAMCMD_DIR}/linux64/steamclient.so ${STEAM_DIR}/.steam/sdk64/steamclient.so
 
 # Start gameserver
-${CS2_DIR}/game/cs2.sh +ip ${IP} -port ${PORT} -dedicated -game csgo -console -usercon +map ${MAP} +gametype ${GAME_TYPE} +gamemode ${GAME_MODE}
+${CS2_DIR}/game/cs2.sh +ip ${IP} -port ${PORT} -dedicated -game csgo -console -usercon +map ${MAP} +gametype ${GAME_TYPE} +gamemode ${GAME_MODE} +exec autoexec.cfg
