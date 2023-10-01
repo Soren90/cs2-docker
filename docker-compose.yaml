@@ -21,7 +21,7 @@ services:
       MAXPLAYERS: 12
       USER: #Steam username
       PASSWORD: #Steam password
-      EXTRAARG: ""
+      EXTRAARG: #"+login AAAAA" # Here you can add steamguard code for first login
 
     volumes:
       - type: volume
