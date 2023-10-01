@@ -21,6 +21,7 @@ services:
       MAXPLAYERS: 12
       USER: #Steam username
       PASSWORD: #Steam password
+      EXTRAARG: ""
 
     volumes:
       - type: volume
