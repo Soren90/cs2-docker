@@ -5,7 +5,7 @@ volumes:
     name: cs2-data
 
 services:
-  csgo:
+  cs2:
     image: soren90/cs2:latest
     container_name: cs2-ds
 
@@ -21,7 +21,8 @@ services:
       MAXPLAYERS: 12
       USER: #Steam username
       PASSWORD: #Steam password
-      EXTRAARG: #"+login AAAAA" # Here you can add steamguard code for first login
+      STEAMGUARDCODE: #Not mandatory. But manual docker attach needed to fill in steam guard code
+      EXTRAARG: #Extra Launch options
 
     volumes:
       - type: volume

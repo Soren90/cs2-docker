@@ -53,7 +53,7 @@ sed -i "s/^sv_password.*/sv_password \"$SERVER_PASSWORD\"/" $CS2_DIR/game/csgo/c
 fi
 
 # Install/update game
-${STEAMCMD_DIR}/steamcmd.sh +login $USER $PASSWORD +force_install_dir ${CS2_DIR} +app_update 730 +quit
+${STEAMCMD_DIR}/steamcmd.sh +login "${USER}" "${PASSWORD}" ${STEAMGUARDCODE} +force_install_dir ${CS2_DIR} +app_update 730 +quit
 
 # hacky error fix
 mkdir -p ${STEAM_DIR}/.steam/sdk32
