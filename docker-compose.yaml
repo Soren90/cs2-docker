@@ -28,6 +28,7 @@ services:
       - type: volume
         source: cs2-data
         target: /mnt/server
+      - ./cfg:/mnt/cfg  # Custom cfg files to be mounted to the `/cfg` folder on each container start
 
     network_mode: "host"
 
