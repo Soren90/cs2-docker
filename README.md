@@ -6,7 +6,7 @@ This project is still in early development. But with this docker image you shoul
 
 Install docker:
 ```bash
-curl -fsSL https://get.docker.com/ -o install-docker.sh | sh install-docker.sh
+curl -fsSL https://get.docker.com/ -o install-docker.sh && sh install-docker.sh
 ```
   
 Add your steam username and password to the docker-compose.yml (Ideally a seperate account that doesn't have steam guard if possible. Not tested)
