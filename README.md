@@ -34,10 +34,17 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 > [!IMPORTANT]
 > If you are using an architecture other than Debian, check the link: [Install Docker Engine](https://docs.docker.com/engine/install/)
 
-Add your steam TOKEN to the docker-compose.yml check this link [manage tokens](https://steamcommunity.com/dev/managegameservers) to generate your token.
-Remembering to put the AppID as 730 (which refers to CS2)
 
-start the server:
+
+> [!WARNING]
+> Add your steam TOKEN to the docker-compose.yml check this link [manage tokens](https://steamcommunity.com/dev/managegameservers) to generate your token.
+> Remembering to put the AppID as 730 (which refers to CS2)
+
+## Start the server
+> [!IMPORTANT]
+> Copy the contents of the docker-compose.yaml file and paste it into a file with the same name on your machine
+
+And start the server:
 ```bash
 docker compose up -d
 ```
@@ -89,6 +96,7 @@ services:
     restart: unless-stopped
     stdin_open: true
     tty: true
+
   rconpanel:
     image: soren90/rcon-panel
     ports:
