@@ -3,8 +3,7 @@ sleep 1
 : "${STEAM_DIR:?'ERROR: STEAM_DIR IS NOT SET!'}"
 : "${STEAMCMD_DIR:?'ERROR: STEAMCMD_DIR IS NOT SET!'}"
 : "${CS2_DIR:?'ERROR: CSGO_DIR IS NOT SET!'}"
-: "${USER:?'ERROR: USER IS NOT SET!'}"
-: "${PASSWORD:?'ERROR: PASSWORD IS NOT SET!'}"
+: "${TOKEN}:?'ERROR: TOKEN IS NOT SET!'}"
 
 # Set defaults
 export SERVER_HOSTNAME="${SERVER_HOSTNAME:-cs2server}"
@@ -15,6 +14,7 @@ export MAP="${MAP:-de_dust2}"
 export MAPGROUP="${MAPGROUP:-mg_active}"
 export MAXPLAYERS="${MAXPLAYERS:-12}"
 export IP="${IP:-0.0.0.0}"
+export TOKEN="${TOKEN:-token}"
 
 # Copy competitive configs
 mkdir -p ${CS2_DIR}/game/csgo/cfg
@@ -53,7 +53,7 @@ sed -i "s/^sv_password.*/sv_password \"$SERVER_PASSWORD\"/" $CS2_DIR/game/csgo/c
 fi
 
 # Install/update game
-${STEAMCMD_DIR}/steamcmd.sh +login "${USER}" "${PASSWORD}" ${STEAMGUARDCODE} +force_install_dir ${CS2_DIR} +app_update 730 +quit
+${STEAMCMD_DIR}/steamcmd.sh +login anonymous +force_install_dir ${CS2_DIR} +app_update 730 +quit
 
 # hacky error fix
 mkdir -p ${STEAM_DIR}/.steam/sdk32
@@ -63,4 +63,4 @@ cp ${STEAMCMD_DIR}/linux32/steamclient.so ${STEAM_DIR}/.steam/sdk32/steamclient.
 cp ${STEAMCMD_DIR}/linux64/steamclient.so ${STEAM_DIR}/.steam/sdk64/steamclient.so
 
 # Start gameserver
-${CS2_DIR}/game/cs2.sh +ip ${IP} -port ${PORT} -dedicated -game csgo -console -usercon +map ${MAP} +game_type ${GAME_TYPE} +game_mode ${GAME_MODE} +exec autoexec.cfg ${EXTRAARG}
+${CS2_DIR}/game/cs2.sh +ip ${IP} -port ${PORT} -dedicated -game csgo -console -usercon +map ${MAP} +game_type ${GAME_TYPE} +game_mode ${GAME_MODE} +exec autoexec.cfg +sv_setsteamaccount "${TOKEN}" -maxplayers_override ${MAXPLAYERS} ${EXTRAARG}

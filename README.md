@@ -9,16 +9,12 @@ Install docker:
 curl -fsSL https://get.docker.com/ -o install-docker.sh && sh install-docker.sh
 ```
   
-Add your steam username and password to the docker-compose.yml (Ideally a seperate account that doesn't have steam guard if possible. Not tested)
+Add your steam TOKEN to the docker-compose.yml check this link [gerenciar tokens](https://steamcommunity.com/dev/managegameservers) to generate your token.
+Remembering to put the AppID as 730 (which refers to CS2)
   
 start the server:
 ```bash
 docker-compose up -d
-```
-
-If you are using an account with steamguard enabled, you need to attach the container and put in your code
-```bash
-docker attach cs2-ds
 ```
 
 If you need to modify the server files, you will find the server files here: /var/lib/docker/volumes/cs2-data/_data/ 
@@ -57,8 +53,7 @@ services:
       GAME_MODE: 1
       MAP: de_inferno
       MAXPLAYERS: 12
-      USER:
-      PASSWORD:
+      TOKEN:
 
     volumes:
       - type: volume

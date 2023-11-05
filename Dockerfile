@@ -16,5 +16,5 @@ ENV USER=steam HOME=/mnt/server
 WORKDIR /mnt/server
 
 COPY entrypoint.sh /entrypoint.sh
-COPY cfg/* /mnt/cfg
+COPY cfg/* /mnt/cfg/
 CMD [ "/bin/bash", "/entrypoint.sh" ]
