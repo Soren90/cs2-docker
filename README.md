@@ -1,20 +1,45 @@
-# CS2 dockerized
+# Counter Strike 2 Server - CS2 Dockerized
 
-This project is still in early development. But with this docker image you should be able to run a cs2 server in a pretty simple manner. Pull requests are open and I'll be happy to implement improvements to the project
+This project is still in early development. But with this docker image you should be able to run a CS2 Server in a pretty simple manner. Pull requests are open and I'll be happy to implement improvements to the project
 
 ## How to use
 
-Install docker:
+> [!WARNING]
+> It is important that you already have Docker installed, if not, I have left some steps below, if you read carefully you will be able to install and run the containers.
+
+Install Docker on Ubuntu/Debian:
+
+Step 1:
 ```bash
-curl -fsSL https://get.docker.com/ -o install-docker.sh && sh install-docker.sh
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
 ```
-  
-Add your steam TOKEN to the docker-compose.yml check this link [gerenciar tokens](https://steamcommunity.com/dev/managegameservers) to generate your token.
+
+Step 2:
+```bash
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+> [!IMPORTANT]
+> If you are using an architecture other than Debian, check the link: [Install Docker Engine](https://docs.docker.com/engine/install/)
+
+Add your steam TOKEN to the docker-compose.yml check this link [manage tokens](https://steamcommunity.com/dev/managegameservers) to generate your token.
 Remembering to put the AppID as 730 (which refers to CS2)
-  
+
 start the server:
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 If you need to modify the server files, you will find the server files here: /var/lib/docker/volumes/cs2-data/_data/ 
@@ -24,7 +49,6 @@ If you need to modify the server files, you will find the server files here: /va
 - Fix RCON (Bugged for now. You can only use rcon_address outside of the server for now.)
 - Get rid of host networking and automatically fetch the container IP.
 - Add sourcemod/metamod when ready
-- Put username/password into secret
 - Improve this document
 
 ## RCON workaround
