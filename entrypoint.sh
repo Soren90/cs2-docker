@@ -63,4 +63,4 @@ cp ${STEAMCMD_DIR}/linux32/steamclient.so ${STEAM_DIR}/.steam/sdk32/steamclient.
 cp ${STEAMCMD_DIR}/linux64/steamclient.so ${STEAM_DIR}/.steam/sdk64/steamclient.so
 
 # Start gameserver
-${CS2_DIR}/game/cs2.sh +ip ${IP} -port ${PORT} -dedicated -game csgo -console -usercon +map ${MAP} +game_type ${GAME_TYPE} +game_mode ${GAME_MODE} +exec autoexec.cfg ${EXTRAARG}
+${CS2_DIR}/game/cs2.sh +ip ${IP} -port ${PORT} -maxplayers ${MAXPLAYERS} -dedicated -game csgo -console -usercon +map ${MAP} +mapgroup ${MAPGROUP} +game_type ${GAME_TYPE} +game_mode ${GAME_MODE} +exec autoexec.cfg ${EXTRAARG}
