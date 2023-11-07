@@ -19,6 +19,7 @@ services:
       GAME_MODE: 1
       MAP: de_inferno
       MAXPLAYERS: 12
+      MAPGROUP: mg_active
       USER: #Steam username
       PASSWORD: #Steam password
       STEAMGUARDCODE: #Not mandatory. But manual docker attach needed to fill in steam guard code

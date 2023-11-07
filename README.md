@@ -21,12 +21,18 @@ If you are using an account with steamguard enabled, you need to attach the cont
 docker attach cs2-ds
 ```
 
+You can also use EXTRAARG to add it like this:
+```yaml
+EXTRAARG: "+login AAAAA"
+```
+
 If you need to modify the server files, you will find the server files here: /var/lib/docker/volumes/cs2-data/_data/ 
 
 ## TODO
 
 - Fix RCON (Bugged for now. You can only use rcon_address outside of the server for now.)
 - Get rid of host networking and automatically fetch the container IP.
+- Make it possible to modify server.cfg. For now it gets replaced on startup (Thanks valve)
 - Add sourcemod/metamod when ready
 - Put username/password into secret
 - Improve this document
@@ -49,16 +55,18 @@ services:
 
     environment:
       SERVER_HOSTNAME: "Counter-strike 2 Dedicated server"
-      SERVER_PASSWORD: 
-      RCON_PASSWORD: 
+      SERVER_PASSWORD: ""
+      RCON_PASSWORD: "" 
       IP: 0.0.0.0
       PORT: 27015
       GAME_TYPE: 0
       GAME_MODE: 1
       MAP: de_inferno
       MAXPLAYERS: 12
+      MAPGROUP: mg_active
       USER:
       PASSWORD:
+      EXTRAARG: ""
 
     volumes:
       - type: volume
