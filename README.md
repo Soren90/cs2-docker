@@ -6,24 +6,15 @@ This project is still in early development. But with this docker image you shoul
 
 Install docker:
 ```bash
-curl -fsSL https://get.docker.com/ -o install-docker.sh | sh install-docker.sh
+curl -fsSL https://get.docker.com/ -o install-docker.sh && sh install-docker.sh
 ```
-  
-Add your steam username and password to the docker-compose.yml (Ideally a seperate account that doesn't have steam guard if possible. Not tested)
-  
+> [!IMPORTANT]
+> You need to add your GSLT-token to the docker-compose file. You can generate your Game Server Login Token [here](https://steamcommunity.com/dev/managegameservers).  
+> Use AppID 730 for CS2.
+ 
 start the server:
 ```bash
-docker-compose up -d
-```
-
-If you are using an account with steamguard enabled, you need to attach the container and put in your code
-```bash
-docker attach cs2-ds
-```
-
-You can also use EXTRAARG to add it like this:
-```yaml
-EXTRAARG: "+login AAAAA"
+docker compose up -d
 ```
 
 If you need to modify the server files, you will find the server files here: /var/lib/docker/volumes/cs2-data/_data/ 
@@ -31,10 +22,7 @@ If you need to modify the server files, you will find the server files here: /va
 ## TODO
 
 - Fix RCON (Bugged for now. You can only use rcon_address outside of the server for now.)
-- Get rid of host networking and automatically fetch the container IP.
-- Make it possible to modify server.cfg. For now it gets replaced on startup (Thanks valve)
 - Add sourcemod/metamod when ready
-- Put username/password into secret
 - Improve this document
 
 ## RCON workaround
@@ -64,8 +52,7 @@ services:
       MAP: de_inferno
       MAXPLAYERS: 12
       MAPGROUP: mg_active
-      USER:
-      PASSWORD:
+      GSLT:
       EXTRAARG: ""
 
     volumes:

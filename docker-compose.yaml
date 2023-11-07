@@ -20,9 +20,7 @@ services:
       MAP: de_inferno
       MAXPLAYERS: 12
       MAPGROUP: mg_active
-      USER: #Steam username
-      PASSWORD: #Steam password
-      STEAMGUARDCODE: #Not mandatory. But manual docker attach needed to fill in steam guard code
+      GSLT: #Mandatory
       EXTRAARG: #Extra Launch options
 
     volumes:
