@@ -9,8 +9,7 @@ Install docker:
 curl -fsSL https://get.docker.com/ -o install-docker.sh && sh install-docker.sh
 ```
 > [!IMPORTANT]
-> You need to add your GSLT-token to the docker-compose file. You can generate your Game Server Login Token [here](https://steamcommunity.com/dev/managegameservers).  
-> Use AppID 730 for CS2.
+> You need to add your GSLT-token to the docker-compose file. You can generate your Game Server Login Token [here](https://steamcommunity.com/dev/managegameservers). Use AppID 730 for CS2.
  
 start the server:
 ```bash
